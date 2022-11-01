@@ -9,7 +9,7 @@ Linux
 Probado en Ubuntu 22.04 LTS y Ubuntu 20.04 LTS y Ubuntu 18.04 LTS.
 
 ## Versión
-Actualmente en se encuentra en 1.3v
+Actualmente en se encuentra en 1.4v
 
 Última actualización: 1 nov 2022
 
@@ -24,6 +24,7 @@ Para poder usar este script es necesario haber realizado lo siguiente:
 ```terminal
 sudo apt-get -y update
 sudo apt install -y network-manager-vpnc-gnome
+sudo apt install net-tools
 ``` 
 
 
