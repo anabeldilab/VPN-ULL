@@ -9,7 +9,7 @@ Linux
 Probado en Ubuntu 22.04 LTS y Ubuntu 20.04 LTS y Ubuntu 18.04 LTS.
 
 ## Versión
-Actualmente en se encuentra en 1.4v
+Actualmente en se encuentra en 1.5v
 
 Última actualización: 1 nov 2022
 
