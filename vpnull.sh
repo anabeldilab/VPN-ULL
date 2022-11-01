@@ -1,7 +1,9 @@
+#! /bin/bash
+
 # Hecho por Anabel Díaz Labrador
 # alu0101206011
 # 
-# Versión 1.4v
+# Versión 1.5v
 # Última actualización: 1 nov 2022
 #
 # Script que automatiza el proceso de configuración, conexión
@@ -10,7 +12,6 @@
 # Necesario ejecutar con permisos de administrador (sudo)
 
 
-#! /bin/bash
 
 CONNECT="-ON"
 DISCONNECT="-OFF"
@@ -55,8 +56,9 @@ process()
 usage()
 {
   echo "usage: vpnull [-OFF]or[-ON] to disconnect or connect."
-  echo "vpnull [-R ó --reset] to reset data."
-}
+  echo "       vpnull [-R ó --reset] to reset data."
+  echo "       vpnull [-S ó --status] to see the current status."
+} 
 
 initial()
 {
@@ -70,7 +72,7 @@ initial()
   
     while true; do
       read -p 'VPN Username: ' user
-      read -sp 'Password: ' password
+      read -s -p 'Password: ' password
       echo
       echo "¿Están correctos sus datos? Luego no se podrán cambiar. Y/n"
       read answer
@@ -108,14 +110,23 @@ while [ "$1" != "" ]; do
       echo "Reseteado con éxito"
       exit 0
       ;;
+     -S | --status )
+      vpn_running_check
+      if [ $CONNECTED = 1  ]; then
+        echo "Usted tiene la VPN activada"
+      else
+        echo "Usted tiene la VPN desactivada"
+      fi
+      exit 0
+      ;;
     * )
-    echo "La opcion $1 no existe, por favor indique una opcion valida."
+    echo "La opción $1 no existe, por favor indique una opción válida."
     usage 
     exit_error "----------------------------------------------------------------"
   esac
   shift
 done    
 
-echo "Introduzca algun argumento. "
+echo "Introduzca algún argumento. "
 usage 
 exit_error "----------------------------------------------------------------"
