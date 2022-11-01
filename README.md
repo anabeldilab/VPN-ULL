@@ -3,6 +3,11 @@ Hecho por Anabel Díaz Labrador.
 
 alu0101206011
 
+## Sistema operativo
+Linux
+
+Probado en Ubuntu 22.04 LTS y Ubuntu 20.04 LTS y Ubuntu 18.04 LTS.
+
 ## Versión
 Actualmente en se encuentra en 1.3v
 
@@ -14,3 +19,18 @@ y desconexión del VPN de la Universidad de La Laguna.
 
 ## Requisitos
 Es necesario ejecutar el script con permisos de administrador (sudo).
+
+Para poder usar este script es necesario haber realizado lo siguiente:
+```terminal
+sudo apt-get -y update
+sudo apt install -y network-manager-vpnc-gnome
+``` 
+
+
+
+## Referencias
+[Servicio de VPN de la ULL](https://www.ull.es/servicios/stic/2020/12/01/servicio-de-vpn-de-la-ull/)
+
+[VPN GUIA ULL](https://docs.google.com/document/d/1xhSRVqo6y5HYtQQtBemLEwDG6a_yjGlzrxjwuYxIQAk/edit)
+
+
