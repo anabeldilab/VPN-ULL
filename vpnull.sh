@@ -41,13 +41,18 @@ process()
       exit_error "Ya se encuentra conectado a la VPN."
     fi
     echo "Conectando..."
-    sudo vpnc-connect vpnull.conf --local-port 0 1>&2
+    vpnc-connect vpnull.conf --local-port 0 1>&2
+    if [ $? != 0 ];then
+      echo "Borrando datos introducidos..."
+      rm $FILE
+      echo "Borrado con éxito."
+    fi
   elif [ $1 = $DISCONNECT ]; then
     if [ $CONNECTED = 0 ]; then
       exit_error "No se puede desconectar de la VPN porque ya se encuentra desconectado."
     fi
     echo "Desconectando..."
-    sudo vpnc-disconnect 
+    vpnc-disconnect 
   fi
 }
 
