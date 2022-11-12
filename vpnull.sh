@@ -11,8 +11,6 @@
 #
 # Necesario ejecutar con permisos de administrador (sudo)
 
-
-
 CONNECT="-ON"
 DISCONNECT="-OFF"
 CONNECTED=0
@@ -58,7 +56,6 @@ usage()
   echo "usage: vpnull [-OFF]or[-ON] to disconnect or connect."
   echo "       vpnull [-R ó --reset] to reset data."
   echo "       vpnull [-S ó --status] to see the current status."
-  echo
   echo "Must be run with administrator privileges (sudo)."
 } 
 
@@ -92,6 +89,7 @@ initial()
 
 if [ $(whoami) != "root" ]; then
   echo "Debe ejecutar con permisos de administrador (sudo)."
+  exit 1
 fi
 
 while [ "$1" != "" ]; do
@@ -112,26 +110,28 @@ while [ "$1" != "" ]; do
       ;;
      -R | --reset )
       rm $FILE
-      echo "Reseteado con éxito"
+      echo "Reseteado con éxito."
       exit 0
       ;;
      -S | --status )
       vpn_running_check
       if [ $CONNECTED = 1  ]; then
-        echo "Usted tiene la VPN activada"
+        echo "Usted tiene la VPN activada."
       else
-        echo "Usted tiene la VPN desactivada"
+        echo "Usted tiene la VPN desactivada."
       fi
       exit 0
       ;;
     * )
     echo "La opción $1 no existe, por favor indique una opción válida."
+    echo
     usage 
     exit_error "----------------------------------------------------------------"
   esac
   shift
 done    
 
-echo "Introduzca algún argumento. "
+echo "Introduzca algún argumento."
+echo
 usage 
 exit_error "----------------------------------------------------------------"

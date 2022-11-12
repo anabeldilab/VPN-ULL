@@ -53,6 +53,7 @@ Para poder usar este script es necesario haber realizado lo siguiente:
 sudo apt-get -y update
 sudo apt install -y network-manager-vpnc-gnome
 sudo apt install net-tools
+chmod u+x vpnull.sh
 ``` 
 
 
