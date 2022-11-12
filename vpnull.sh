@@ -58,6 +58,8 @@ usage()
   echo "usage: vpnull [-OFF]or[-ON] to disconnect or connect."
   echo "       vpnull [-R ó --reset] to reset data."
   echo "       vpnull [-S ó --status] to see the current status."
+  echo
+  echo "Must be run with administrator privileges (sudo)."
 } 
 
 initial()
@@ -88,6 +90,9 @@ initial()
   fi
 }
 
+if [ $(whoami) != "root" ]; then
+  echo "Debe ejecutar con permisos de administrador (sudo)."
+fi
 
 while [ "$1" != "" ]; do
   case $1 in
