@@ -14,6 +14,7 @@
 CONNECT="-ON"
 DISCONNECT="-OFF"
 CONNECTED=0
+REGISTERED=0
 FILE=/etc/vpnc/vpnull.conf
 
 exit_error()
@@ -59,8 +60,9 @@ process()
 usage()
 {
   echo "usage: vpnull [-OFF]or[-ON] to disconnect or connect."
-  echo "       vpnull [-R ó --reset] to reset data."
-  echo "       vpnull [-S ó --status] to see the current status."
+  echo "       vpnull [-D o --delete] to reset data."
+  echo "       vpnull [-S o --status] to see the current status."
+  echo "       vpnull [-R o --register] to introduce VPN login data."
   echo "Must be run with administrator privileges (sudo)."
 } 
 
@@ -68,6 +70,7 @@ initial()
 {
   if [ -f "$FILE" ]; then
     echo "Fichero $FILE correcto"
+    REGISTERED=1
   else 
     echo "Creando fichero $FILE..."
     echo "IPSec gateway vpn.ull.es" >> $FILE
@@ -78,7 +81,7 @@ initial()
       read -p 'VPN Username: ' user
       read -s -p 'Password: ' password
       echo
-      echo "¿Están correctos sus datos? Luego no se podrán cambiar. Y/n"
+      echo "¿Están correctos sus datos? Y/n"
       read answer
       if [[ $answer == "Y" || $answer == "y" ]]; then
         break
@@ -113,9 +116,21 @@ while [ "$1" != "" ]; do
       process -OFF
       exit 0
       ;;
-     -R | --reset )
+     -D | --delete )
       rm $FILE
       echo "Reseteado con éxito."
+      exit 0
+      ;;
+     -R | --register )
+      initial
+      if [ $REGISTERED = 1 ];then
+        echo "Usted tiene ya sus datos introducidos, ¿desea volver a introudicr sus datos? Y/n"
+        read answer
+        if [[ $answer == "Y" || $answer == "y" ]]; then
+          rm $FILE
+          initial
+        fi  
+      fi
       exit 0
       ;;
      -S | --status )
