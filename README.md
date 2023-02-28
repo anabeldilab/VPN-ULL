@@ -17,12 +17,17 @@ Actualmente en se encuentra en 1.5v
 Script que automatiza el proceso de configuración, conexión
 y desconexión del VPN de la Universidad de La Laguna.
 
-Para conectarte a la VPN usar:
+Para registrar los datos de usuario de la VPN usar:
+```
+sudo ./vpnull.sh -R
+```
+
+Para conectarse a la VPN usar:
 ```
 sudo ./vpnull.sh -ON
 ```
 
-La primera vez que se ejecute este script se le preguntará su nombre de usuario de la Universidad de La Laguna (aluxxxxxxxxxx)
+La primera vez que se ejecute este script, si no se ha registrado antes, se le preguntará su nombre de usuario de la Universidad de La Laguna (aluxxxxxxxxxx)
 y su contraseña.
 
 Para desconectarse de la VPN usar:
@@ -30,9 +35,9 @@ Para desconectarse de la VPN usar:
 sudo ./vpnull.sh -OFF
 ```
 
-Si se ha equivocado o quiere cambiar los datos que se han puesto la primera vez que ha ejecutado el script, usar:
+Para borrar el registro/usuario de la VPN actual usar:
 ```
-sudo ./vpnull.sh -R
+sudo ./vpnull.sh -D
 ```
 
 Para ver si la VPN está activada o desactivada usar:
